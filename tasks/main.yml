@@ -24,7 +24,7 @@
     - { regexp: "^PubkeyAuthentication\ ", line: "PubkeyAuthentication yes" }
     - { regexp: "^PasswordAuthentication\ ", line: "PasswordAuthentication no" }
     - { regexp: "^ChallengeResponseAuthentication\ ", line: "ChallengeResponseAuthentication no" }
-    - { regexp: "^MaxAuthTries\ ", line: "MaxAuthTries {{ ssh_max_retries }}" }
+    - { regexp: "^MaxAuthTries\ ", line: "MaxAuthTries {{ ssh_max_auth_tries }}" }
     - { regexp: "^LoginGraceTime\ ", line: "LoginGraceTime 30" }
   when: ssh_disable_password_login
 
