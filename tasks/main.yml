@@ -7,8 +7,8 @@
   with_items:
     - { line: "Port {{ ssh_port }}" }
     - { line: "Protocol 2" }
-    - { line: "Protocol 1", state: "absent"}
-    - { line: "RSAAuthentication yes", state: "absent"}
+    - { line: "Protocol 1", state: "absent" }
+    - { line: "RSAAuthentication yes", state: "absent" }
     - { regexp: "^PermitRootLogin\ ", line: "PermitRootLogin {{ ssh_permit_root_login }}" }
     - { regexp: "^PermitEmptyPasswords\ ", line: "PermitEmptyPasswords no" }
     - { regexp: "^StrictModes\ ", line: "StrictModes yes" }
@@ -24,9 +24,8 @@
     - { regexp: "^PubkeyAuthentication\ ", line: "PubkeyAuthentication yes" }
     - { regexp: "^PasswordAuthentication\ ", line: "PasswordAuthentication no" }
     - { regexp: "^ChallengeResponseAuthentication\ ", line: "ChallengeResponseAuthentication no" }
-    - { regexp: "^MaxAuthTries\ ", line: "MaxAuthTries 1" }
+    - { regexp: "^MaxAuthTries\ ", line: "MaxAuthTries {{ ssh_max_retries }}" }
     - { regexp: "^LoginGraceTime\ ", line: "LoginGraceTime 30" }
-
   when: ssh_disable_password_login
 
 - name: Create host keys
